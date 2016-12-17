@@ -27,7 +27,11 @@ public class SelectUIManager : MonoBehaviour {
     private Color[] alphaChange = new Color[2];
     private EventTrigger.Entry[] clickEvent;
 
+<<<<<<< HEAD
     CharacterList characterList;
+=======
+    [SerializeField] CharacterList characterList;
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     
     public int CurrentCharacterIndex { get { return currentCharacterIndex; } }
     public CharacterList CharacterList { get { return characterList; } set { characterList = value; } }
@@ -131,7 +135,11 @@ public class SelectUIManager : MonoBehaviour {
                         className = "Class3";
                     }
                 }
+<<<<<<< HEAD
                 else if(characterList.CharacterData[CharacterIndex].Gender == (byte)CharacterStatus.Gender.FeMale)
+=======
+                else if(characterList.CharacterData[CharacterIndex].Gender == (byte)CharacterStatus.Gender.Female)
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
                 {
                     if (characterList.CharacterData[CharacterIndex].HClass == (byte)CharacterStatus.CharClass.Warrior)
                     {

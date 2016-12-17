@@ -5,7 +5,10 @@ public class Armageddon : MonoBehaviour
 {
 
 	public ParticleSystem FireBallparticleSystem;
+<<<<<<< HEAD
 	public CharacterStatus charStatus;
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	public CharacterManager charManager;
 	public GameObject character;
 	public int armageddonDamage;
@@ -30,7 +33,10 @@ public class Armageddon : MonoBehaviour
     {
 		character = GameObject.FindWithTag ("Player");
 		charManager = character.GetComponent<CharacterManager> ();
+<<<<<<< HEAD
 		charStatus = charManager.CharStatus;
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         ps = GetComponent<ParticleSystem>();
 		FireBallRigid = GetComponent<Rigidbody> ();
 		armageddonAni = GetComponent<Animator> ();
@@ -41,7 +47,11 @@ public class Armageddon : MonoBehaviour
 		pieceAttack = false;
 		armageddonPiece = this.gameObject.GetComponentsInChildren<ArmageddonPiece> ();
 		FireBallRigid.velocity =((transform.forward - transform.up) * FireBallSpeed);
+<<<<<<< HEAD
 		skillLv = charStatus.SkillLevel [4];
+=======
+		skillLv = CharacterStatus.Instance.SkillLevel [4];
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 		//armageddonDamage =(int) ((SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 4).GetSkillData (skillLv).SkillValue)*  charStatus.Attack);
 		armageddonDamage = 100;
 		armageddonSound.PlayOneShot (armageddonClipSound);
@@ -60,7 +70,11 @@ public class Armageddon : MonoBehaviour
 		Destroy (armageddonImpact, 0.4f);
 		Destroy (armageddonExplosion, 0.4f);
 		Destroy (meteorExplosion, 0.4f);
+<<<<<<< HEAD
 		Destroy (meteorCenter, 1f);
+=======
+		Destroy (meteorCenter, 2f);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 		armageddonBox.enabled = false;
 	//	FireBallRigid.velocity = (-this.transform.up)*3f;
 

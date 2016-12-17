@@ -2,7 +2,11 @@
 using System.Collections;
 
 public class Section : MonoBehaviour {
+<<<<<<< HEAD
 	public DungeonManager dungeonManager;
+=======
+	public DungeonManager DungeonManager.Instance;
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 //	public Frog[] Frog;
 //	public Rabbit[] Rabbit;
 //	public Duck[] shockWaveMonster;
@@ -40,7 +44,11 @@ public class Section : MonoBehaviour {
 //
 //	public void MonsterSet(){
 //		goToTheBoss = GameObject.Find ("GoToTheBoss");
+<<<<<<< HEAD
 ////		dungeonManager = gameObject.transform.parent.GetComponent<DungeonManager>();
+=======
+////		DungeonManager.Instance = gameObject.transform.parent.GetComponent<DungeonManager>();
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 //
 //		//Frog = gameObject.transform.GetComponentsInChildren<Frog> ();
 //		//monsterCount = (Frog.Length + Rabbit.Length+1);
@@ -162,7 +170,11 @@ public class Section : MonoBehaviour {
 //
 //
 ////		if (monsterCount == 0) {
+<<<<<<< HEAD
 ////			dungeonManager.SceneChange ();
+=======
+////			DungeonManager.Instance.SceneChange ();
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 ////		}
 //	}
 //

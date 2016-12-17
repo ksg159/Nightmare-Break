@@ -25,7 +25,11 @@ public class TestMonster : Monster
 ////	int shootNumber;
 //	public const int bossPatternCount = 3;
 //
+<<<<<<< HEAD
 //	public UIManager uiManager;
+=======
+//	public UIManager UIManager.Instance;
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 //	public BoxCollider[] MonsterWeapon;
 //	public BigBearBossPatternName BigBearBossState;
 //	AnimatorStateInfo stateInfo;
@@ -58,7 +62,11 @@ public class TestMonster : Monster
 //		//shootNumber = 6;
 //		RunRange = 30;
 //		attackRange = 3;
+<<<<<<< HEAD
 ////		uiManager = GameObject.FindWithTag ("UIManager").GetComponent<UIManager> ();
+=======
+////		UIManager.Instance = GameObject.FindWithTag ("UIManager").GetComponent<UIManager> ();
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 //
 //
 //		this.bossAudio = this.gameObject.GetComponent<AudioSource> ();
@@ -268,7 +276,11 @@ public class TestMonster : Monster
 ////		{
 ////			MaxHP  -= _Damage;
 ////
+<<<<<<< HEAD
 //////			uiManager.bossHp.fillAmount = maxLife / currentLife;
+=======
+//////			UIManager.Instance.bossHp.fillAmount = maxLife / currentLife;
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 ////			if (MaxHP > 0)
 ////			{
 ////				//hitanimation

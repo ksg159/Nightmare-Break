@@ -25,10 +25,13 @@ public class CharacterManager : MonoBehaviour
 	public BoxCollider charWeapon;
 	public CharWeapon weapon;
 
+<<<<<<< HEAD
 	public InputManager inputmanager;
 	public CharacterStatus charStatus;
     NetworkManager networkManager;
 
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     public GameObject[] enermy;
 
 	public float jumpPower;
@@ -65,18 +68,24 @@ public class CharacterManager : MonoBehaviour
 	[SerializeField]
 	CharacterState state;
 
+<<<<<<< HEAD
 	public CharacterStatus CharStatus { get { return this.charStatus; } }
 
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	public CharacterState State { get { return state; } }
 
 	public bool NormalAttackState { get { return this.normalAttackState; } }
 
 	public bool SkillAttackState { get { return this.skillAttackState; } }
 
+<<<<<<< HEAD
 	private UIManager uiManager;
 
 	public UIManager UIManager { get { return uiManager; } set { uiManager = value; } }
 
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	public TestInputManager testinput;
 
     public int UserNum { get { return userNum; } }
@@ -87,13 +96,20 @@ public class CharacterManager : MonoBehaviour
 	{
 		
 		SetCharacterStatus ();
+<<<<<<< HEAD
 		//uiManager = GameObject.FindWithTag("UIManager").GetComponent<UIManager>();
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 		animator = GetComponent<Animator> ();
 		this.CharAudio = this.gameObject.GetComponent<AudioSource> ();
 		state = CharacterState.Idle;
 		rigdbody = GetComponent<Rigidbody> ();
 		enermy = GameObject.FindGameObjectsWithTag ("Enermy");
+<<<<<<< HEAD
 		//testinput = GameObject.Find ("TestInputManager").GetComponent<TestInputManager> ();
+=======
+		testinput = GameObject.Find ("TestInputManager").GetComponent<TestInputManager> ();
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 		charDir = true;
 		JumpMove = false;
 		weapon = this.gameObject.GetComponentInChildren<CharWeapon> ();
@@ -153,15 +169,22 @@ public class CharacterManager : MonoBehaviour
 
 	public void SetCharacterStatus ()
 	{
+<<<<<<< HEAD
 		charStatus = GameObject.FindGameObjectWithTag ("CharStatus").GetComponent<CharacterStatus> ();
 		charStatus.SetCharacterStatus ();
+=======
+		CharacterStatus.Instance.SetCharacterStatus ();
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 		classSound ();
 	}
 
     public void SetUserNum(int num)
     {
         userNum = num;
+<<<<<<< HEAD
         networkManager = GameObject.FindWithTag("NetworkManager").GetComponent<NetworkManager>();
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     }
 
 	public void AnimationEnd ()
@@ -176,6 +199,13 @@ public class CharacterManager : MonoBehaviour
 	//char state Method
 	public void Move (float ver, float hor)
 	{
+<<<<<<< HEAD
+=======
+        if (!animator)
+        {
+            animator = GetComponent<Animator>();
+        }
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 		if (state == CharacterState.Idle || state == CharacterState.Run)
 		{
 			runState = this.animator.GetCurrentAnimatorStateInfo (0);
@@ -210,11 +240,19 @@ public class CharacterManager : MonoBehaviour
 					{	
 						if (hor == -1.0f || hor == 1.0f)
 						{
+<<<<<<< HEAD
 							transform.Translate ((Vector3.forward * ver - Vector3.right * hor) * Time.deltaTime * (charStatus.MoveSpeed - 3.0f), Space.World);
 						}
 						else
 						{
 							transform.Translate ((Vector3.forward * ver - Vector3.right * hor) * Time.deltaTime * (charStatus.MoveSpeed), Space.World);
+=======
+							transform.Translate ((Vector3.forward * ver - Vector3.right * hor) * Time.deltaTime * (CharacterStatus.Instance.MoveSpeed - 3.0f), Space.World);
+						}
+						else
+						{
+							transform.Translate ((Vector3.forward * ver - Vector3.right * hor) * Time.deltaTime * (CharacterStatus.Instance.MoveSpeed), Space.World);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 						}
 						
 					}
@@ -231,7 +269,11 @@ public class CharacterManager : MonoBehaviour
 		}
 		else if (state == CharacterState.Jump && JumpMove)
 		{
+<<<<<<< HEAD
 			transform.Translate ((Vector3.forward * ver - Vector3.right * hor) * Time.deltaTime * charStatus.MoveSpeed, Space.World);
+=======
+			transform.Translate ((Vector3.forward * ver - Vector3.right * hor) * Time.deltaTime * CharacterStatus.Instance.MoveSpeed, Space.World);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 		}
 
 	}
@@ -282,9 +324,15 @@ public class CharacterManager : MonoBehaviour
 		//if (charStatus.MagicPoint > SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 1).ManaCost && charStatus.ActiveSkillUse [0])
 		{
 			//UsingMagicPoint (1);
+<<<<<<< HEAD
 			//uiManager.BattleUIManager.mpBarCalculation(charStatus.MaxMagicPoint, charStatus.MagicPoint);
 			//StartCoroutine (charStatus.SkillCoolTimer (0, SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 1).SkillCoolTime));
 		//	StartCoroutine (uiManager.BattleUIManager.SetSkillCoolTimeUI (0, SkillManager.instance.SkillData.GetSkill((int)charStatus.HClass, 1).SkillCoolTime));
+=======
+			//UIManager.Instance.BattleUIManager.mpBarCalculation(charStatus.MaxMagicPoint, charStatus.MagicPoint);
+			//StartCoroutine (charStatus.SkillCoolTimer (0, SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 1).SkillCoolTime));
+		//	StartCoroutine (UIManager.Instance.BattleUIManager.SetSkillCoolTimeUI (0, SkillManager.instance.SkillData.GetSkill((int)charStatus.HClass, 1).SkillCoolTime));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 			if (state == CharacterState.Run || state == CharacterState.Idle || state == CharacterState.Skill1)
 			{
 				CharState ((int)CharacterState.Skill1);
@@ -298,9 +346,15 @@ public class CharacterManager : MonoBehaviour
 		//if (charStatus.MagicPoint > SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 2).ManaCost && charStatus.ActiveSkillUse [1])
 		{
 			//UsingMagicPoint (2);
+<<<<<<< HEAD
 		   //  uiManager.BattleUIManager.mpBarCalculation(charStatus.MaxMagicPoint, charStatus.MagicPoint);
 			//StartCoroutine (charStatus.SkillCoolTimer (1, SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 2).SkillCoolTime));
 			//StartCoroutine (uiManager.BattleUIManager.SetSkillCoolTimeUI (1, SkillManager.instance.SkillData.GetSkill((int)charStatus.HClass, 2).SkillCoolTime));
+=======
+		   //  UIManager.Instance.BattleUIManager.mpBarCalculation(charStatus.MaxMagicPoint, charStatus.MagicPoint);
+			//StartCoroutine (charStatus.SkillCoolTimer (1, SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 2).SkillCoolTime));
+			//StartCoroutine (UIManager.Instance.BattleUIManager.SetSkillCoolTimeUI (1, SkillManager.instance.SkillData.GetSkill((int)charStatus.HClass, 2).SkillCoolTime));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 			if (state != CharacterState.Jump && state != CharacterState.Skill2 && state != CharacterState.Skill1 && state != CharacterState.Skill4 && state != CharacterState.HitDamage && state != CharacterState.Death)
 			{
 				CharState ((int)CharacterState.Skill2);
@@ -313,9 +367,15 @@ public class CharacterManager : MonoBehaviour
 		//if (charStatus.MagicPoint > SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 3).ManaCost && charStatus.ActiveSkillUse [2])
 		{
 			//UsingMagicPoint (3);
+<<<<<<< HEAD
 			//uiManager.BattleUIManager.mpBarCalculation(charStatus.MaxMagicPoint, charStatus.MagicPoint);
 			//StartCoroutine (charStatus.SkillCoolTimer (2, SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 3).SkillCoolTime));
 			//StartCoroutine(uiManager.BattleUIManager.SetSkillCoolTimeUI(2, SkillManager.instance.SkillData.GetSkill((int)charStatus.HClass, 3).SkillCoolTime));
+=======
+			//UIManager.Instance.BattleUIManager.mpBarCalculation(charStatus.MaxMagicPoint, charStatus.MagicPoint);
+			//StartCoroutine (charStatus.SkillCoolTimer (2, SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 3).SkillCoolTime));
+			//StartCoroutine(UIManager.Instance.BattleUIManager.SetSkillCoolTimeUI(2, SkillManager.instance.SkillData.GetSkill((int)charStatus.HClass, 3).SkillCoolTime));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 			if (state != CharacterState.Jump && state != CharacterState.Attack && state != CharacterState.Skill3 && state != CharacterState.Skill2 && state != CharacterState.Skill1 && state != CharacterState.Skill4 && state != CharacterState.HitDamage && state != CharacterState.Death)
 			{
 				CharState ((int)CharacterState.Skill3);
@@ -328,9 +388,15 @@ public class CharacterManager : MonoBehaviour
 	//	if (charStatus.MagicPoint > SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 4).ManaCost && charStatus.ActiveSkillUse [3])
 		{
 			//UsingMagicPoint (4);
+<<<<<<< HEAD
 			//uiManager.BattleUIManager.mpBarCalculation(charStatus.MaxMagicPoint, charStatus.MagicPoint);
 			//StartCoroutine (charStatus.SkillCoolTimer (3, SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 4).SkillCoolTime));
 			//StartCoroutine(uiManager.BattleUIManager.SetSkillCoolTimeUI(3, SkillManager.instance.SkillData.GetSkill((int)charStatus.HClass, 4).SkillCoolTime));
+=======
+			//UIManager.Instance.BattleUIManager.mpBarCalculation(charStatus.MaxMagicPoint, charStatus.MagicPoint);
+			//StartCoroutine (charStatus.SkillCoolTimer (3, SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 4).SkillCoolTime));
+			//StartCoroutine(UIManager.Instance.BattleUIManager.SetSkillCoolTimeUI(3, SkillManager.instance.SkillData.GetSkill((int)charStatus.HClass, 4).SkillCoolTime));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 			if (state != CharacterState.Jump && state != CharacterState.Skill1 && state != CharacterState.Skill2 && state != CharacterState.Skill4 && state != CharacterState.HitDamage && state != CharacterState.Death)
 			{
 				//giganticSwordCastSword.SetActive(true);
@@ -372,7 +438,11 @@ public class CharacterManager : MonoBehaviour
 	{
 		for (int i = 0; i < potionCount; i++)
 		{
+<<<<<<< HEAD
 			charStatus.DecreaseHealthPoint ((int)(charStatus.HealthPoint * -0.3));
+=======
+            CharacterStatus.Instance.DecreaseHealthPoint ((int)(CharacterStatus.Instance.HealthPoint * -0.3));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 			yield return new WaitForSeconds (1f);
 		}
 	}
@@ -467,7 +537,11 @@ public class CharacterManager : MonoBehaviour
 
             if (GameObject.FindGameObjectWithTag("GameManager") != null)
             {
+<<<<<<< HEAD
                 if (userNum == networkManager.MyIndex)
+=======
+                if (userNum == NetworkManager.Instance.MyIndex)
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
                 {
                     DataSender.Instance.CharacterStateSend(Inputstate, userNum);
                 }
@@ -479,19 +553,32 @@ public class CharacterManager : MonoBehaviour
 	{
 		if (charAlive)
 		{
+<<<<<<< HEAD
 			if (charStatus.HealthPoint > 0)
 			{
 				charStatus.DecreaseHealthPoint (damage);
 				CharState ((int)CharacterState.HitDamage);
 			}
 			if (charStatus.HealthPoint <= 0)
+=======
+			if (CharacterStatus.Instance.HealthPoint > 0)
+			{
+                CharacterStatus.Instance.DecreaseHealthPoint (damage);
+				CharState ((int)CharacterState.HitDamage);
+			}
+			if (CharacterStatus.Instance.HealthPoint <= 0)
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 			{
 				//Death Animation
 				CharState ((int)CharacterState.Death);
 				charAlive = false;
 			}
 		}
+<<<<<<< HEAD
 		Debug.Log (charStatus.HealthPoint);
+=======
+		Debug.Log (CharacterStatus.Instance.HealthPoint);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	}
 
 	public void SetPosition (UnitPositionData newPositionData)
@@ -539,7 +626,11 @@ public class CharacterManager : MonoBehaviour
 
 	public virtual void UsingMagicPoint(int SkillArray)
 	{
+<<<<<<< HEAD
 		charStatus.DecreaseMagicPoint (SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, SkillArray).ManaCost);
+=======
+        CharacterStatus.Instance.DecreaseMagicPoint (SkillManager.instance.SkillData.GetSkill ((int)CharacterStatus.Instance.HClass, SkillArray).ManaCost);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	}
 
 	public IEnumerator MoveSoundCol ()

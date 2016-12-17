@@ -10,7 +10,10 @@ public class BattleUIManager : MonoBehaviour
 	private const float mouseOverUI_yPos = 105f;
     private const int maxSkillUI = 6;
     private const int maxskillCoolTimeUI = 4;
+<<<<<<< HEAD
     private UIManager uiManager;
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	private Image potionUI;
 	private Text mouseOverUI;
 	private Image[] skillUI;
@@ -90,7 +93,10 @@ public class BattleUIManager : MonoBehaviour
 
     public void SetUIObject()
     {
+<<<<<<< HEAD
         uiManager = GameObject.FindWithTag("UIManager").GetComponent<UIManager>();
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         hpBar = GameObject.Find("HPBar").GetComponent<Image>();
         mpBar = GameObject.Find("MPBar").GetComponent<Image>();
         monsterHpBar = GameObject.Find("MonsterHPBar").GetComponent<Image>();
@@ -104,7 +110,11 @@ public class BattleUIManager : MonoBehaviour
         EventTrigger.Entry[] enterEvent = new EventTrigger.Entry[maxSkillUI];
         EventTrigger.Entry exitEvent = new EventTrigger.Entry();
         exitEvent.eventID = EventTriggerType.PointerExit;
+<<<<<<< HEAD
         exitEvent.callback.AddListener((data) => { uiManager.OnPointExit(); });
+=======
+        exitEvent.callback.AddListener((data) => { UIManager.Instance.OnPointExit(); });
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         for (int i = 0; i < skillUI.Length; i++)
         {
             skillUI[i] = GameObject.Find("Skill" + (i + 1)).GetComponent<Image>();
@@ -118,12 +128,21 @@ public class BattleUIManager : MonoBehaviour
                 skillCoolTimeUI[i] = GameObject.Find("Skill" + (i + 1) + "_CoolTime").GetComponent<Image>();
             }
         }
+<<<<<<< HEAD
         enterEvent[0].callback.AddListener((data) => { uiManager.PointEnter(0); });
         enterEvent[1].callback.AddListener((data) => { uiManager.PointEnter(1); });
         enterEvent[2].callback.AddListener((data) => { uiManager.PointEnter(2); });
         enterEvent[3].callback.AddListener((data) => { uiManager.PointEnter(3); });
         enterEvent[4].callback.AddListener((data) => { uiManager.PointEnter(4); });
         enterEvent[5].callback.AddListener((data) => { uiManager.PointEnter(5); });
+=======
+        enterEvent[0].callback.AddListener((data) => { UIManager.Instance.PointEnter(0); });
+        enterEvent[1].callback.AddListener((data) => { UIManager.Instance.PointEnter(1); });
+        enterEvent[2].callback.AddListener((data) => { UIManager.Instance.PointEnter(2); });
+        enterEvent[3].callback.AddListener((data) => { UIManager.Instance.PointEnter(3); });
+        enterEvent[4].callback.AddListener((data) => { UIManager.Instance.PointEnter(4); });
+        enterEvent[5].callback.AddListener((data) => { UIManager.Instance.PointEnter(5); });
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     }
 
     public void SetPointEnterUI(int skillIndex, int skillLevel, int classIndex)

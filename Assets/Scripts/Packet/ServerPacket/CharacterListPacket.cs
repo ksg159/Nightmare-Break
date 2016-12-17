@@ -71,6 +71,10 @@ public class CharacterListPacket : Packet<CharacterList>
     }
 }
 
+<<<<<<< HEAD
+=======
+[System.Serializable]
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 public class CharacterList
 {
     CharacterData[] characterData;
@@ -88,6 +92,10 @@ public class CharacterList
     }
 }
 
+<<<<<<< HEAD
+=======
+[System.Serializable]
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 public class CharacterData
 {
     string name;

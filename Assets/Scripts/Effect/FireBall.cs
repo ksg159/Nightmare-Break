@@ -4,7 +4,10 @@ using System.Collections;
 public class FireBall : MonoBehaviour {
 
   	public ParticleSystem FireBallparticleSystem;
+<<<<<<< HEAD
 	public CharacterStatus charStatus;
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	public CharacterManager charManager;
 	public GameObject character;
 	public int FireBallDamage;
@@ -17,8 +20,11 @@ public class FireBall : MonoBehaviour {
     void Start()
     {
 		character = GameObject.FindWithTag ("Player");
+<<<<<<< HEAD
 		charManager = character.GetComponent<CharacterManager> ();
 		charStatus = charManager.CharStatus;
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 		FireBallRigid = GetComponent<Rigidbody> ();
 		FireBallRigid.velocity = transform.forward* FireBallSpeed;
 		fireBallSound =this.gameObject.GetComponent<AudioSource> ();
@@ -28,8 +34,13 @@ public class FireBall : MonoBehaviour {
 		fireBallSound.PlayOneShot (flyingBall);
 
 		FireBallparticleSystem = GetComponent<ParticleSystem>();
+<<<<<<< HEAD
 		skillLv = charStatus.SkillLevel [0];
 		FireBallDamage =(int) ((SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 1).GetSkillData (skillLv).SkillValue)*  charStatus.Attack);
+=======
+		skillLv = CharacterStatus.Instance.SkillLevel [0];
+		FireBallDamage =(int) ((SkillManager.instance.SkillData.GetSkill ((int)CharacterStatus.Instance.HClass, 1).GetSkillData (skillLv).SkillValue)* CharacterStatus.Instance.Attack);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 		Destroy (this.gameObject, 0.45f);
 	}
 

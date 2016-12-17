@@ -71,7 +71,11 @@ public class MiddleBossMonster : Monster {
 //		{
 //			maxHP -= _Damage;
 //
+<<<<<<< HEAD
 //			//			uiManager.bossHp.fillAmount = maxLife / currentLife;
+=======
+//			//			UIManager.Instance.bossHp.fillAmount = maxLife / currentLife;
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 //			if (maxHP > 0)
 //			{
 //				//hitanimation

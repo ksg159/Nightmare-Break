@@ -440,7 +440,10 @@ public class Frog : Monster {
 			yield return new WaitForSeconds (0.2f);
 		}
 	}
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 }

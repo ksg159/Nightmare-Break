@@ -12,12 +12,15 @@ public enum Result
 
 public class DataHandler : MonoBehaviour
 {
+<<<<<<< HEAD
     GameManager gameManager;
     NetworkManager networkManager;
     DungeonManager dungeonManager;
     UIManager uiManager;
     CharacterStatus characterStatus;
 
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     public Queue<DataPacket> receiveMsgs;
     object receiveLock;
 
@@ -35,16 +38,20 @@ public class DataHandler : MonoBehaviour
         receiveMsgs = receiveQueue;
         receiveLock = newLock;
 
+<<<<<<< HEAD
         networkManager = GetComponent<NetworkManager>();
         uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         SetServerNotifier();
         SetUdpNotifier();
 
         StartCoroutine(DataHandle());
     }
 
+<<<<<<< HEAD
     public void SetCharacterStatus()
     {
         characterStatus = GameObject.FindWithTag("CharStatus").GetComponent<CharacterStatus>();
@@ -52,6 +59,11 @@ public class DataHandler : MonoBehaviour
 
     public void SetServerNotifier()
     {
+=======
+    public void SetServerNotifier()
+    {
+        server_notifier.Add((int)ServerPacketId.ServerConnectionCheck, ServerConnectionCheck);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         server_notifier.Add((int)ServerPacketId.CreateAccountResult, CreateAccountResult);
         server_notifier.Add((int)ServerPacketId.DeleteAccountResult, DeleteAccountResult);
         server_notifier.Add((int)ServerPacketId.LoginResult, LoginResult);
@@ -59,8 +71,14 @@ public class DataHandler : MonoBehaviour
         server_notifier.Add((int)ServerPacketId.CharacterList, CharacterList);
         server_notifier.Add((int)ServerPacketId.CreateCharacterResult, CreateCharacterResult);
         server_notifier.Add((int)ServerPacketId.DeleteChracterResult, DeleteCharacterResult);
+<<<<<<< HEAD
         server_notifier.Add((int)ServerPacketId.RoomList, RoomList);
         server_notifier.Add((int)ServerPacketId.CharacterStatus, CharacterStatus);
+=======
+        server_notifier.Add((int)ServerPacketId.CharacterStatus, SetCharacterStatus);
+        server_notifier.Add((int)ServerPacketId.RoomList, RoomList);
+        server_notifier.Add((int)ServerPacketId.ReturnToSelectResult, ReturnToSelectResult);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         server_notifier.Add((int)ServerPacketId.CreateRoomNumber, CreateRoomNumber);
         server_notifier.Add((int)ServerPacketId.EnterRoomNumber, EnterRoomNumber);
         server_notifier.Add((int)ServerPacketId.ExitRoomNumber, ExitRoomNumber);
@@ -68,7 +86,11 @@ public class DataHandler : MonoBehaviour
         server_notifier.Add((int)ServerPacketId.StartGame, StartGame);
         server_notifier.Add((int)ServerPacketId.UdpConnection, UdpConnection);
         server_notifier.Add((int)ServerPacketId.MonsterSpawnList, MonsterSpawnList);
+<<<<<<< HEAD
         server_notifier.Add((int)ServerPacketId.DungeonData, DungeonData);
+=======
+        server_notifier.Add((int)ServerPacketId.MonsterStatusData, MonsterStatusData);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         server_notifier.Add((int)ServerPacketId.StartDungeon, StartDungeon);
     }
 
@@ -136,6 +158,15 @@ public class DataHandler : MonoBehaviour
 
         }
     }
+<<<<<<< HEAD
+=======
+
+    //Server - 연결 확인
+    public void ServerConnectionCheck(DataPacket packet)
+    {
+        DataSender.Instance.ServerConnectionAnswer();
+    }
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     
     //Server - 가입 결과
     public void CreateAccountResult(DataPacket packet)
@@ -146,12 +177,21 @@ public class DataHandler : MonoBehaviour
         
         if(resultData.Result == (byte)Result.Success)
         {
+<<<<<<< HEAD
             StartCoroutine(uiManager.Dialog(1.0f, "가입 성공"));
             uiManager.LoginUIManager.CreateAccountSuccess();
         }
         else if (resultData.Result == (byte)Result.Fail)
         {
             StartCoroutine(uiManager.Dialog(1.0f, "가입 실패"));
+=======
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "가입 성공"));
+            UIManager.Instance.LoginUIManager.CreateAccountSuccess();
+        }
+        else if (resultData.Result == (byte)Result.Fail)
+        {
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "가입 실패"));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }
     }
 
@@ -164,11 +204,19 @@ public class DataHandler : MonoBehaviour
 
         if (resultData.Result == (byte)Result.Success)
         {
+<<<<<<< HEAD
             StartCoroutine(uiManager.Dialog(1.0f, "탈퇴 성공"));
         }
         else if (resultData.Result == (byte)Result.Fail)
         {
             StartCoroutine(uiManager.Dialog(1.0f, "탈퇴 실패"));
+=======
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "탈퇴 성공"));
+        }
+        else if (resultData.Result == (byte)Result.Fail)
+        {
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "탈퇴 실패"));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }
     }
 
@@ -182,12 +230,20 @@ public class DataHandler : MonoBehaviour
 
         if (resultData.Result == (byte)Result.Success)
         {
+<<<<<<< HEAD
             StartCoroutine(uiManager.Dialog(1.0f, "로그인 성공"));
+=======
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "로그인 성공"));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
             SceneChanger.Instance.SceneChange(SceneChanger.SceneName.SelectScene, true);
         }
         else if (resultData.Result == (byte)Result.Fail)
         {
+<<<<<<< HEAD
             StartCoroutine(uiManager.Dialog(1.0f, "로그인 실패"));
+=======
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "로그인 실패"));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }
     }
 
@@ -205,7 +261,11 @@ public class DataHandler : MonoBehaviour
         CharacterListPacket characterListPacket = new CharacterListPacket(packet.msg);
         CharacterList characterList = characterListPacket.GetData();
 
+<<<<<<< HEAD
         uiManager.SelectUIManager.CharacterList = characterList;
+=======
+        UIManager.Instance.SelectUIManager.CharacterList = characterList;
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 
         if (SceneChanger.Instance.CurrentScene == SceneChanger.SceneName.LoadingScene)
         {
@@ -213,7 +273,11 @@ public class DataHandler : MonoBehaviour
         }
         else
         {
+<<<<<<< HEAD
             uiManager.SelectUIManager.SetCharacter();
+=======
+            UIManager.Instance.SelectUIManager.SetCharacter();
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }        
     }
 
@@ -227,12 +291,20 @@ public class DataHandler : MonoBehaviour
 
         if (resultData.Result == (byte)Result.Success)
         {
+<<<<<<< HEAD
             StartCoroutine(uiManager.Dialog(1.0f, "캐릭터 생성 성공"));
+=======
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "캐릭터 생성 성공"));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
             SceneChanger.Instance.SceneChange(SceneChanger.SceneName.SelectScene, false);
         }
         else if (resultData.Result == (byte)Result.Fail)
         {
+<<<<<<< HEAD
             StartCoroutine(uiManager.Dialog(1.0f, "캐릭터 생성 실패"));
+=======
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "캐릭터 생성 실패"));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }
     }
 
@@ -246,11 +318,19 @@ public class DataHandler : MonoBehaviour
 
         if (resultData.Result == (byte)Result.Success)
         {
+<<<<<<< HEAD
             StartCoroutine(uiManager.Dialog(1.0f, "캐릭터 삭제 성공")); 
         }
         else if (resultData.Result == (byte)Result.Fail)
         {
             StartCoroutine(uiManager.Dialog(1.0f, "캐릭터 삭제 실패"));
+=======
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "캐릭터 삭제 성공")); 
+        }
+        else if (resultData.Result == (byte)Result.Fail)
+        {
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "캐릭터 삭제 실패"));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }
     }
 
@@ -264,11 +344,34 @@ public class DataHandler : MonoBehaviour
 
         if (resultData.Result == (byte)Result.Success)
         {
+<<<<<<< HEAD
             StartCoroutine(uiManager.Dialog(1.0f, "캐릭터 선택 성공"));
         }
         else if (resultData.Result == (byte)Result.Fail)
         {
             StartCoroutine(uiManager.Dialog(1.0f, "캐릭터 선택 실패"));
+=======
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "캐릭터 선택 성공"));
+        }
+        else if (resultData.Result == (byte)Result.Fail)
+        {
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "캐릭터 선택 실패"));
+        }
+    }
+
+    //Server - 캐릭터 정보 수신
+    public void SetCharacterStatus(DataPacket packet)
+    {
+        Debug.Log("캐릭터 정보 수신");
+        CharacterStatusPacket characterStatusPacket = new CharacterStatusPacket(packet.msg);
+        CharacterStatusData characterStatusData = characterStatusPacket.GetData();
+
+        CharacterStatus.Instance.SetCharacterStatus(characterStatusData);
+
+        if (SceneChanger.Instance.CurrentScene == SceneChanger.SceneName.LoadingScene)
+        {
+            SceneChanger.Instance.LoadingCheck[1] = true;
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }
     }
 
@@ -279,12 +382,27 @@ public class DataHandler : MonoBehaviour
         RoomListPacket roomListPacket = new RoomListPacket(packet.msg);
         RoomListData roomListData = roomListPacket.GetData();
 
+<<<<<<< HEAD
         uiManager.WaitingUIManager.SetRoomListData(roomListData);
 
         for (int i =0; i< WaitingUIManager.maxRoomNum; i++)
         {
             Debug.Log(roomListData.Rooms[i].RoomName);
             Debug.Log(roomListData.Rooms[i].PlayerNum);
+=======
+        UIManager.Instance.WaitingUIManager.SetRoomListData(roomListData);
+
+        for (int roomIndex = 0; roomIndex < WaitingUIManager.maxRoomNum; roomIndex++)
+        {
+            Debug.Log(roomIndex + "번 방 유저 정보");
+            for (int userIndex = 0; userIndex < WaitingUIManager.maxPlayerNum; userIndex ++)
+            {
+                Debug.Log(roomListData.Rooms[roomIndex].RoomUserData[userIndex].UserClass);
+                Debug.Log(roomListData.Rooms[roomIndex].RoomUserData[userIndex].UserGender);
+                Debug.Log(roomListData.Rooms[roomIndex].RoomUserData[userIndex].UserName);
+                Debug.Log(roomListData.Rooms[roomIndex].RoomUserData[userIndex].UserLevel);
+            }
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }
 
         if (SceneChanger.Instance.CurrentScene == SceneChanger.SceneName.LoadingScene)
@@ -297,6 +415,7 @@ public class DataHandler : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     //Server - 캐릭터 정보 수신
     public void CharacterStatus(DataPacket packet)
     {
@@ -309,6 +428,23 @@ public class DataHandler : MonoBehaviour
         if (SceneChanger.Instance.CurrentScene == SceneChanger.SceneName.LoadingScene)
         {
             SceneChanger.Instance.LoadingCheck[1] = true;
+=======
+    //Server - 선택 창으로 돌아가기 결과 수신
+    public void ReturnToSelectResult(DataPacket packet)
+    {
+        Debug.Log("선택 창으로 돌아가기 결과");
+
+        ResultPacket resultPacket = new ResultPacket(packet.msg);
+        ResultData resultData = resultPacket.GetData();
+
+        if (resultData.Result == (byte)Result.Success)
+        {
+            SceneChanger.Instance.SceneChange(SceneChanger.SceneName.SelectScene, true);
+        }
+        else
+        {
+            Debug.Log("선택창으로 돌아가기 실패");
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }
     }
 
@@ -321,12 +457,21 @@ public class DataHandler : MonoBehaviour
 
         if (resultData.RoomNum < 0)
         {
+<<<<<<< HEAD
             StartCoroutine(uiManager.Dialog(1.0f, "방 생성 실패"));
         }
         else if (resultData.RoomNum <= WaitingUIManager.maxRoomNum)
         {
             StartCoroutine(uiManager.Dialog(1.0f, "방 생성 성공"));
             uiManager.WaitingUIManager.CreateRoom(resultData.RoomNum);
+=======
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "방 생성 실패"));
+        }
+        else if (resultData.RoomNum <= WaitingUIManager.maxRoomNum)
+        {
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "방 생성 성공"));
+            DataSender.Instance.EnterRoom(resultData.RoomNum);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }
     }
 
@@ -341,11 +486,19 @@ public class DataHandler : MonoBehaviour
         
         if (roomNumberData.RoomNum < 0)
         {
+<<<<<<< HEAD
             StartCoroutine(uiManager.Dialog(1.0f, "방 입장 실패"));
         }
         else if (roomNumberData.RoomNum <= WaitingUIManager.maxPlayerNum)
         {
             StartCoroutine(uiManager.Dialog(1.0f, "방 입장 성공"));
+=======
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "방 입장 실패"));
+        }
+        else if (roomNumberData.RoomNum <= WaitingUIManager.maxPlayerNum)
+        {
+            StartCoroutine(UIManager.Instance.Dialog(1.0f, "방 입장 성공"));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 
             SceneChanger.Instance.SceneChange(SceneChanger.SceneName.RoomScene, false);
         }
@@ -417,7 +570,11 @@ public class DataHandler : MonoBehaviour
         MonsterSpawnListPacket monsterSpawnListPacket = new MonsterSpawnListPacket(packet.msg);
         DungeonData monsterSpawnData = monsterSpawnListPacket.GetData();
 
+<<<<<<< HEAD
         dungeonManager.SetMonsterSpawnList(monsterSpawnData);
+=======
+        DungeonManager.Instance.SetMonsterSpawnList(monsterSpawnData);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 
         if (SceneChanger.Instance.CurrentScene == SceneChanger.SceneName.LoadingScene)
         {
@@ -426,14 +583,24 @@ public class DataHandler : MonoBehaviour
     }
 
     //Server - 던전 데이터 수신
+<<<<<<< HEAD
     public void DungeonData(DataPacket packet)
     {
         Debug.Log("던전 데이터 수신");
+=======
+    public void MonsterStatusData(DataPacket packet)
+    {
+        Debug.Log("몬스터 스텟 데이터 수신");
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 
         MonsterStatusPacket dungeonDataPacket = new MonsterStatusPacket(packet.msg);
         MonsterStatusData dungeonData = dungeonDataPacket.GetData();
 
+<<<<<<< HEAD
         dungeonManager.SetMonsterData(dungeonData);
+=======
+        DungeonManager.Instance.SetMonsterData(dungeonData);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 
         if (SceneChanger.Instance.CurrentScene == SceneChanger.SceneName.LoadingScene)
         {
@@ -454,6 +621,7 @@ public class DataHandler : MonoBehaviour
         {
             string endPoint = udpConnectionData.endPoint[userIndex];
 
+<<<<<<< HEAD
             if (endPoint == networkManager.ServerSock.LocalEndPoint.ToString())
             {
                 networkManager.SetMyIndex(userIndex);
@@ -463,6 +631,17 @@ public class DataHandler : MonoBehaviour
         networkManager.InitializeUdpConnection();
         networkManager.ReSendManager.Initialize(udpConnectionData.playerNum);
         DataSender.Instance.InitializeUdpSend(networkManager.ClientSock);
+=======
+            if (endPoint == NetworkManager.Instance.ServerSock.LocalEndPoint.ToString())
+            {
+                NetworkManager.Instance.SetMyIndex(userIndex);
+            }
+        }
+
+        NetworkManager.Instance.InitializeUdpConnection();
+        NetworkManager.Instance.ReSendManager.Initialize(udpConnectionData.playerNum);
+        DataSender.Instance.InitializeUdpSend(NetworkManager.Instance.ClientSock);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 
         for (int userIndex = 0; userIndex < udpConnectionData.playerNum; userIndex++)
         {
@@ -471,12 +650,21 @@ public class DataHandler : MonoBehaviour
 
             IPEndPoint newEndPoint = new IPEndPoint(IPAddress.Parse(ip), NetworkManager.clientPortNumber + userIndex);
 
+<<<<<<< HEAD
             networkManager.UserIndex.Add(new UserIndex(newEndPoint, userIndex));
 
             if (endPoint != networkManager.ServerSock.LocalEndPoint.ToString())
             {
                 Debug.Log("연결 아이피 : " + newEndPoint.ToString());
                 networkManager.ConnectP2P(newEndPoint);
+=======
+            NetworkManager.Instance.UserIndex.Add(new UserIndex(newEndPoint, userIndex));
+
+            if (endPoint != NetworkManager.Instance.ServerSock.LocalEndPoint.ToString())
+            {
+                Debug.Log("연결 아이피 : " + newEndPoint.ToString());
+                NetworkManager.Instance.ConnectP2P(newEndPoint);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
             }
         }
 
@@ -500,7 +688,11 @@ public class DataHandler : MonoBehaviour
         Debug.Log(packet.endPoint.ToString() + "답신 받음 아이디 : " + udpId);
 
         SendData sendData = new SendData(udpId, packet.endPoint);
+<<<<<<< HEAD
         networkManager.ReSendManager.RemoveReSendData(sendData);
+=======
+        NetworkManager.Instance.ReSendManager.RemoveReSendData(sendData);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     }
 
     //Server - 던전 시작
@@ -524,9 +716,15 @@ public class DataHandler : MonoBehaviour
         CreateUnitPacket createUnitPacket = new CreateUnitPacket(packet.msg);
         CreateUnitData createUnitData = createUnitPacket.GetData();
 
+<<<<<<< HEAD
         int index = networkManager.GetUserIndex(packet.endPoint);
 
         dungeonManager.CreateUnit(createUnitData.ID, index, new Vector3(createUnitData.PosX, createUnitData.PosY, createUnitData.PosZ));
+=======
+        int index = NetworkManager.Instance.GetUserIndex(packet.endPoint);
+
+        DungeonManager.Instance.CreateUnit(createUnitData.ID, index, new Vector3(createUnitData.PosX, createUnitData.PosY, createUnitData.PosZ));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 
         DataSender.Instance.UdpAnswer(packet.endPoint, udpId);
     }
@@ -539,11 +737,19 @@ public class DataHandler : MonoBehaviour
         
         if (unitPositionData.UnitType == (byte)UnitType.Hero)
         {
+<<<<<<< HEAD
             dungeonManager.SetCharacterPosition(unitPositionData);
         }
         else if (unitPositionData.UnitType == (byte)UnitType.Monster)
         {
             dungeonManager.SetMonsterPosition(unitPositionData);
+=======
+            DungeonManager.Instance.SetCharacterPosition(unitPositionData);
+        }
+        else if (unitPositionData.UnitType == (byte)UnitType.Monster)
+        {
+            DungeonManager.Instance.SetMonsterPosition(unitPositionData);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }
     }
 
@@ -555,11 +761,19 @@ public class DataHandler : MonoBehaviour
 
         if (unitStateData.UnitType == (byte)UnitType.Hero)
         {
+<<<<<<< HEAD
             dungeonManager.CharacterState(unitStateData);
         }
         else if (unitStateData.UnitType == (byte)UnitType.Monster)
         {
             dungeonManager.MonsterState(unitStateData);
+=======
+            DungeonManager.Instance.CharacterState(unitStateData);
+        }
+        else if (unitStateData.UnitType == (byte)UnitType.Monster)
+        {
+            DungeonManager.Instance.MonsterState(unitStateData);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }
     }
 }

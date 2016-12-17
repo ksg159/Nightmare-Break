@@ -7,10 +7,17 @@ public class EspadaSwordEffect : MonoBehaviour
 	GameObject giganticSword;
 	public Renderer rend;
 	public bool count;
+<<<<<<< HEAD
 	public CharacterStatus charStatus;
 	public CharacterManager charManager;
 	float giganticSwordAliveTime;
 	public GameObject character;
+=======
+	public CharacterManager charManager;
+	float giganticSwordAliveTime;
+	public GameObject character;
+	public GameObject swordEffect;
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	public int swordDamage;
 	public AudioSource swordSound;
 	public AudioClip swordSummonSound;
@@ -31,6 +38,7 @@ public class EspadaSwordEffect : MonoBehaviour
 		giganticSwordRigd = GetComponent<Rigidbody> ();
 		swordSpeed = 40;
 		giganticSwordRigd.velocity = (transform.forward* swordSpeed);
+<<<<<<< HEAD
 
         charStatus = charManager.CharStatus;
 		giganticSword = this.gameObject;
@@ -51,12 +59,27 @@ public class EspadaSwordEffect : MonoBehaviour
         }
     }
 
+=======
+		swordDamage = 10000;
+		giganticSword = this.gameObject;
+		swordSound.volume = 0.1f;
+		rend = GetComponent<Renderer> ();
+		swordSound.PlayOneShot (swordSummonSound);
+		Destroy (this.gameObject, 3.0f);
+	}
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     void OnCollisionEnter(Collision coll)
     {
 		
         if (coll.gameObject.layer == LayerMask.NameToLayer("Map"))
         {
+<<<<<<< HEAD
 			Instantiate(Resources.Load<GameObject>("Effect/SwordExplosion"), transform.position, Quaternion.identity);
+=======
+			swordEffect =Instantiate(Resources.Load<GameObject>("Effect/SwordExplosion"), transform.position,new Quaternion(90,-90,0,0))as GameObject;
+
+			Destroy (swordEffect, 2.5f);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 			count = false;
 			swordSound.PlayOneShot (swordFinishSound);
 			Debug.Log ("in Field");

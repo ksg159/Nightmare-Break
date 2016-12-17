@@ -32,10 +32,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     void Start()
     {
         myIP = Dns.GetHostAddresses(Dns.GetHostName())[1].ToString();
         InitializeManager();
+=======
+    void Awake()
+    {
+        myIP = Dns.GetHostAddresses(Dns.GetHostName())[1].ToString();
+        InitializeManager();
+        Application.runInBackground = true;
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     }
 
     void Update()
@@ -57,7 +65,11 @@ public class GameManager : MonoBehaviour
 
             uiManager.SetUIManager(UIManagerIndex.Login);
             uiManager.LoginUIManager.ManagerInitialize();
+<<<<<<< HEAD
             DontDestroyOnLoad(uiManager);
+=======
+            DontDestroyOnLoad(uiManager.gameObject);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }
         else
         {
@@ -71,7 +83,11 @@ public class GameManager : MonoBehaviour
             networkManager.tag = "NetworkManager";
 
             networkManager.InitializeManager();
+<<<<<<< HEAD
             DontDestroyOnLoad(networkManager);
+=======
+            DontDestroyOnLoad(networkManager.gameObject);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         }
         else
         {
@@ -87,8 +103,16 @@ public class GameManager : MonoBehaviour
         characterStatus.name = "CharacterStatus";
         characterStatus.tag = "CharStatus";
         DontDestroyOnLoad(characterStatus);
+<<<<<<< HEAD
 
         networkManager.DataHandler.SetCharacterStatus();
+=======
+    }
+
+    public void DestroyManagerInWait()
+    {
+        Destroy(characterStatus.gameObject);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     }
 
     public void SetManagerInGame()
@@ -104,7 +128,11 @@ public class GameManager : MonoBehaviour
 
     public void OnApplicationQuit()
     {
+<<<<<<< HEAD
         networkManager.DataSender.GameClose();
+=======
+        NetworkManager.Instance.DataSender.GameClose();
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     }
 }
 

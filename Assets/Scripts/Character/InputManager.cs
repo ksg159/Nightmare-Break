@@ -3,6 +3,23 @@ using System.Collections;
 
 public class InputManager : MonoBehaviour
 {
+<<<<<<< HEAD
+=======
+    private static InputManager instance = null;
+    public static InputManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindWithTag("InputManager").GetComponent<InputManager>();
+            }
+
+            return instance;
+        }
+    }
+
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     public float vertical = 0;
     public float horizontal = 0;
 

@@ -147,7 +147,11 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
+<<<<<<< HEAD
       loopTime: 0
+=======
+      loopTime: 1
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

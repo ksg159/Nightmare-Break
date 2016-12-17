@@ -3,8 +3,11 @@ using System.Collections;
 
 public class ArmageddonPiece : MonoBehaviour 
 {
+<<<<<<< HEAD
 
 	public CharacterStatus charStatus;
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	public CharacterManager charManager;
 	public GameObject character;
 	public BoxCollider pieceBox;
@@ -16,7 +19,10 @@ public class ArmageddonPiece : MonoBehaviour
 	{
 		character = GameObject.FindWithTag ("Player");
 		charManager = character.GetComponent<CharacterManager> ();
+<<<<<<< HEAD
 		charStatus = charManager.CharStatus;
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 		pieceBox = GetComponent<BoxCollider> ();
 		armageddon = this.gameObject.GetComponentInParent<Armageddon> ();
 	

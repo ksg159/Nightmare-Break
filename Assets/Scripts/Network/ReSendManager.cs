@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ReSendManager : MonoBehaviour
+<<<<<<< HEAD
 {
     NetworkManager networkManager;
     
+=======
+{    
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     private Dictionary<int, SendData>[] reSendDatum;
     SendData reSendData;
 
@@ -17,7 +21,10 @@ public class ReSendManager : MonoBehaviour
 
     public void Initialize(int userNum)
     {
+<<<<<<< HEAD
         networkManager = GetComponent<NetworkManager>();
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
         reSendDatum = new Dictionary<int, SendData>[userNum];
 
         for (int i = 0; i < userNum; i++)
@@ -44,7 +51,11 @@ public class ReSendManager : MonoBehaviour
 
     public void RemoveReSendData(SendData sendData)
     {
+<<<<<<< HEAD
         int index = networkManager.GetUserIndex(sendData.EndPoint);
+=======
+        int index = NetworkManager.Instance.GetUserIndex(sendData.EndPoint);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 
         Debug.Log(index);
 

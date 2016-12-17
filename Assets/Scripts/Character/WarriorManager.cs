@@ -37,16 +37,20 @@ public class WarriorManager : CharacterManager
         }
 	}
 
+<<<<<<< HEAD
 	public override void SetCharacterType ()
 	{
 		charStatus.HClass = CharacterStatus.CharClass.Warrior;
 	}
+=======
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	//warrior mealstrom
 	public override void ProcessSkill1 ()
 	{
 		float maelstromSpeed = 0.5f;
 		float maelstromDistance;
         skillTime += Time.deltaTime;
+<<<<<<< HEAD
         if (!wind)
         {
      	   wind = Instantiate(Resources.Load<GameObject>("Effect/Wind"), new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), Quaternion.identity) as GameObject;
@@ -54,6 +58,10 @@ public class WarriorManager : CharacterManager
         }
 
 		//transform.Translate ((Vector3.forward * testinput.vertical - Vector3.right * testinput.horizontal) * Time.deltaTime * (charStatus.MoveSpeed -6.0f), Space.World);
+=======
+
+		transform.Translate ((Vector3.forward * testinput.vertical - Vector3.right * testinput.horizontal) * Time.deltaTime * (CharacterStatus.Instance.MoveSpeed-5f), Space.World);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 
 
         if (enermy != null)
@@ -78,6 +86,14 @@ public class WarriorManager : CharacterManager
 		}
 
 	}
+<<<<<<< HEAD
+=======
+	public void WindEffect()
+	{
+		wind = Instantiate(Resources.Load<GameObject>("Effect/Wind"), new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), Quaternion.identity) as GameObject;
+		wind.transform.parent = this.gameObject.transform;
+	}
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 
 	//Warrior Cutoff
 	public override void ProcessSkill2 ()
@@ -105,7 +121,11 @@ public class WarriorManager : CharacterManager
 	{
 		if (!SwordDance)
 		{
+<<<<<<< HEAD
 			if (transform.rotation.y == 0)
+=======
+			if (charDir)
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 			{
 				SwordDance = Instantiate (Resources.Load<GameObject> ("Effect/SwordDance"), new Vector3 (transform.position.x, transform.position.y + 1.0f, transform.position.z + 0.5f), Quaternion.Euler (-90, 0, 0)) as GameObject;
 			}
@@ -168,29 +188,48 @@ public class WarriorManager : CharacterManager
 		if (!poweroverwhelming)
 		{
 			
+<<<<<<< HEAD
 			if (CharStatus.SkillLevel [5] < 4)
+=======
+			if (CharacterStatus.Instance.SkillLevel [5] < 4)
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 			{
 				if (charAlive)
 				{
 					if (charAlive)
 					{
+<<<<<<< HEAD
 						if (CharStatus.HealthPoint > 0)
 						{
 							int deFendDamage;
 							deFendDamage = _damage - (CharStatus.SkillLevel [5] * 1);
+=======
+						if (CharacterStatus.Instance.HealthPoint > 0)
+						{
+							int deFendDamage;
+							deFendDamage = _damage - (CharacterStatus.Instance.SkillLevel [5] * 1);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 							Debug.Log (deFendDamage);
 							if (deFendDamage < 0)
 							{
 								deFendDamage = 0;
 							}
+<<<<<<< HEAD
 							CharStatus.DecreaseHealthPoint (deFendDamage);
+=======
+                            CharacterStatus.Instance.DecreaseHealthPoint (deFendDamage);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 
 							if (State != CharacterState.Skill1 && State != CharacterState.Skill2 && State != CharacterState.Skill3 && State != CharacterState.Skill4)
 							{
 								CharState ((int)CharacterState.HitDamage);
 							}
 						}
+<<<<<<< HEAD
 						if (CharStatus.HealthPoint <= 0)
+=======
+						if (CharacterStatus.Instance.HealthPoint <= 0)
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 						{
 							CharState ((int)CharacterState.Death);
 							charAlive = false;
@@ -198,6 +237,7 @@ public class WarriorManager : CharacterManager
 					}
 				}
 			}
+<<<<<<< HEAD
 			else if (CharStatus.SkillLevel [5] == 4)
 			{
 				Debug.Log (CharStatus.HealthPoint);
@@ -207,12 +247,27 @@ public class WarriorManager : CharacterManager
 					{
 						int deFendDamage;
 						deFendDamage = _damage - (CharStatus.SkillLevel [5] * 1);
+=======
+			else if (CharacterStatus.Instance.SkillLevel [5] == 4)
+			{
+				Debug.Log (CharacterStatus.Instance.HealthPoint);
+				if (charAlive)
+				{
+					if (CharacterStatus.Instance.HealthPoint > 0)
+					{
+						int deFendDamage;
+						deFendDamage = _damage - (CharacterStatus.Instance.SkillLevel [5] * 1);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 
 						if (deFendDamage < 0)
 						{
 							deFendDamage = 0;
 						}
+<<<<<<< HEAD
 						CharStatus.DecreaseHealthPoint (deFendDamage);
+=======
+                        CharacterStatus.Instance.DecreaseHealthPoint (deFendDamage);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	
 						CharState ((int)CharacterState.HitDamage);
 
@@ -221,7 +276,11 @@ public class WarriorManager : CharacterManager
 							CharState ((int)CharacterState.HitDamage);
 						}
 					}
+<<<<<<< HEAD
 					else if (CharStatus.HealthPoint <= 0)
+=======
+					else if (CharacterStatus.Instance.HealthPoint <= 0)
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 					{
 					
 						CharState ((int)CharacterState.Death);
@@ -234,7 +293,11 @@ public class WarriorManager : CharacterManager
 							charAlive = true;
 							animator.SetBool ("Rise", false);
 							StartCoroutine (colltimeCheck ());
+<<<<<<< HEAD
 							CharStatus.DecreaseHealthPoint ((-100));
+=======
+                            CharacterStatus.Instance.DecreaseHealthPoint ((-100));
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 					
 						}
 						else if (rise)

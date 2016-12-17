@@ -14,6 +14,10 @@ public class SceneChanger : MonoBehaviour
         WaitingScene,
         RoomScene,
         InGameScene,
+<<<<<<< HEAD
+=======
+		DefenseScene,
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     }
 
     public enum SelectLoadingData
@@ -75,6 +79,14 @@ public class SceneChanger : MonoBehaviour
         {
             if (nextScene == (int)SceneName.SelectScene)
             {
+<<<<<<< HEAD
+=======
+                if (currentScene == SceneName.WaitingScene)
+                {
+                    GameManager.Instance.DestroyManagerInWait();
+                }
+
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
                 UIManager.Instance.SetUIManager(UIManagerIndex.Select);
                 DataSender.Instance.RequestCharacterList();
 
@@ -99,7 +111,11 @@ public class SceneChanger : MonoBehaviour
             {
                 GameManager.Instance.SetManagerInGame();
 
+<<<<<<< HEAD
                 DungeonManager.Instance.ManagerInitialize(UIManager.Instance.RoomUIManager.DungeonId, UIManager.Instance.RoomUIManager.DungeonLevel);
+=======
+                DungeonManager.Instance.ManagerInitialize(UIManager.Instance.RoomUIManager.DungeonId, UIManager.Instance.RoomUIManager.DungeonLevel, UIManager.Instance.RoomUIManager.UserNum);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
                 UIManager.Instance.SetUIManager(UIManagerIndex.InGame);
 
                 DataSender.Instance.RequestUdpConnection();
@@ -181,12 +197,27 @@ public class SceneChanger : MonoBehaviour
             NetworkManager.Instance.ReSendManager.characterCreating = true;
 
             DungeonManager.Instance.InitializePlayer(NetworkManager.Instance.UserIndex.Count);
+<<<<<<< HEAD
             DungeonManager.Instance.CreatePlayer(0);
+=======
+            DungeonManager.Instance.CreatePlayer((int)CharacterStatus.Instance.HGender, (int)CharacterStatus.Instance.HClass);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 
             currentScene = SceneName.InGameScene;
         }
         #endregion
         
+<<<<<<< HEAD
+=======
+		#region 연우씨 씬 로드
+		else if (scene.name == "")
+		{
+			currentScene = SceneName.DefenseScene;
+			//kyw
+		}
+		#endregion
+
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     }
 
     public void SceneChange(SceneName sceneName, bool needLoadingScene)

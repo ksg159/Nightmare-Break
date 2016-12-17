@@ -3,8 +3,12 @@ using System.Collections;
 
 public class SwordDance : MonoBehaviour 
 {
+<<<<<<< HEAD
 
 	public CharacterStatus charStatus;
+=======
+    
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	public CharacterManager charManager;
 	public GameObject character;
 	public int bladeStormDamage=1;
@@ -18,12 +22,20 @@ public class SwordDance : MonoBehaviour
 	{
 		character = GameObject.FindWithTag ("Player");
 		charManager = character.GetComponent<CharacterManager> ();
+<<<<<<< HEAD
 		charStatus = charManager.CharStatus;
 		bladeStromRigid = GetComponent<Rigidbody> ();
 		bladeStromRigid.velocity = transform.forward * bladeStormSpeed;
 		swordDanceEffect = Resources.Load<GameObject> ("Effect/SwordShadow");
 		skillLv = charStatus.SkillLevel [2];
 		bladeStormDamage =(int) ((SkillManager.instance.SkillData.GetSkill ((int)charStatus.HClass, 3).GetSkillData (skillLv).SkillValue)*  charStatus.Attack);
+=======
+		bladeStromRigid = GetComponent<Rigidbody> ();
+		bladeStromRigid.velocity = transform.forward * bladeStormSpeed;
+		swordDanceEffect = Resources.Load<GameObject> ("Effect/SwordShadow");
+		skillLv = CharacterStatus.Instance.SkillLevel [2];
+		bladeStormDamage =(int) ((SkillManager.instance.SkillData.GetSkill ((int)CharacterStatus.Instance.HClass, 3).GetSkillData (skillLv).SkillValue)* CharacterStatus.Instance.Attack);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	}
 	void Update()
 	{

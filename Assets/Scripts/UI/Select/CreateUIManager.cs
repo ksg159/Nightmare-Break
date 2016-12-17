@@ -236,6 +236,10 @@ public class CreateUIManager : MonoBehaviour
             }
         }
         classPrefeb[currentCharacter].SetActive(true);
+<<<<<<< HEAD
+=======
+        characterAnim = classPrefeb[currentCharacter].GetComponent<Animator>();
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
     }
 
 	public void StartSkillAnim(int _skillNum)

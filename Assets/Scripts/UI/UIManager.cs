@@ -126,7 +126,11 @@ public class UIManager : MonoBehaviour
 		 
 	public void PointEnter(int skillIndex)
 	{
+<<<<<<< HEAD
 		battleUIManager.SetPointEnterUI (skillIndex, 2, (int)charManager.CharStatus.HClass);
+=======
+		battleUIManager.SetPointEnterUI (skillIndex, 2, (int)CharacterStatus.Instance.HClass);
+>>>>>>> 712e498f70097a1120b4938553e24937614e8308
 	}
 	 
 	public void OnPointExit()
