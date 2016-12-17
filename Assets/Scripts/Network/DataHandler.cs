@@ -571,10 +571,14 @@ public class DataHandler : MonoBehaviour
         DungeonData monsterSpawnData = monsterSpawnListPacket.GetData();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         dungeonManager.SetMonsterSpawnList(monsterSpawnData);
 =======
         DungeonManager.Instance.SetMonsterSpawnList(monsterSpawnData);
 >>>>>>> 712e498f70097a1120b4938553e24937614e8308
+=======
+        DungeonManager.Instance.SetMonsterSpawnList(monsterSpawnData);
+>>>>>>> acda1eac855fd78aa614b3b12b9c25d4335cb819
 
         if (SceneChanger.Instance.CurrentScene == SceneChanger.SceneName.LoadingScene)
         {
@@ -597,10 +601,14 @@ public class DataHandler : MonoBehaviour
         MonsterStatusData dungeonData = dungeonDataPacket.GetData();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         dungeonManager.SetMonsterData(dungeonData);
 =======
         DungeonManager.Instance.SetMonsterData(dungeonData);
 >>>>>>> 712e498f70097a1120b4938553e24937614e8308
+=======
+        DungeonManager.Instance.SetMonsterData(dungeonData);
+>>>>>>> acda1eac855fd78aa614b3b12b9c25d4335cb819
 
         if (SceneChanger.Instance.CurrentScene == SceneChanger.SceneName.LoadingScene)
         {
